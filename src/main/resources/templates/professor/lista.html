@@ -9,12 +9,12 @@
 	                <ul class="navbar-nav mr-auto">
 	                    <li class="nav-item active">
 	                        <i class="oi oi-caret-right"></i>
-	                        <span>Lista de Funcionários</span>
+	                        <span>Lista de Professores</span>
 	                    </li>
 	                </ul>
-	                <a class="btn btn-primary btn-md" th:href="@{/funcionarios/cadastrar}" role="button">
+	                <a class="btn btn-primary btn-md" th:href="@{/professores/cadastrar}" role="button">
 	                    <span class="oi oi-plus" title="Cadastro" aria-hidden="true"></span>
-	                    <span>Cadastrar Funcionários</span>
+	                    <span>Cadastrar Professor</span>
 	                </a>
 	            </div>
 	        </nav>
@@ -26,11 +26,11 @@
 	                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseNome"
 	                        aria-controls="collapseNome">Nome
 	                </button>
-	                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseCargo"
-	                        aria-controls="collapseCargo">Cargo
+	                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseEmail"
+	                        aria-controls="collapseCargo">Email 
 	                </button>
-	                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseData"
-	                        aria-controls="collapseData">Datas
+	                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseTurma"
+	                        aria-controls="collapseData">Turmas
 	                </button>
 	            </p>
 	            <div class="row">
@@ -38,7 +38,7 @@
 	                    <div class="collapse" id="collapseNome">
 	
 	                        <nav class="navbar navbar-light bg-light">
-	                            <form class="form-inline" method="GET" th:action="@{/funcionarios/buscar/nome}">
+	                            <form class="form-inline" method="GET" th:action="@{/professores/buscar/nome}">
 	                                <input class="form-control mr-sm-2" type="search" placeholder="nome" aria-label="Search"
 	                                       th:name="nome" />
 	                                <button class="btn btn-outline-success my-2 my-sm-0">Search</button>
@@ -50,14 +50,12 @@
 	            </div>
 				<div class="row">
 	                <div class="col">
-	                    <div class="collapse" id="collapseCargo">
+	                    <div class="collapse" id="collapseEmail">
 	
 	                        <nav class="navbar navbar-light bg-light">
-	                            <form class="form-inline" method="GET" th:action="@{/funcionarios/buscar/cargo}">
-	                                <select class="form-control mr-sm-2" th:name="id" aria-label="Search">
-	                                    <option value="">Cargo</option>
-	                                    <option th:each="c : ${cargos}" th:value="${c.id}" th:text="${c.nome}">Auxiliar Contábil</option>
-	                                </select>
+	                            <form class="form-inline" method="GET" th:action="@{/professores/buscar/email}">
+									<input class="form-control mr-sm-2" type="search" placeholder="email" aria-label="Search"
+	                                       th:name="email" />
 	                                <button class="btn btn-outline-success my-2 my-sm-0">Search</button>
 	                            </form>
 	                        </nav>
@@ -67,14 +65,14 @@
 	            </div>
 	            <div class="row">
 	                <div class="col">
-	                    <div class="collapse" id="collapseData">
+	                    <div class="collapse" id="collapseTurma">
 	
 	                        <nav class="navbar navbar-light bg-light">
-	                            <form class="form-inline" method="GET" th:action="@{/funcionarios/buscar/data}">
-	                                <input class="form-control mr-sm-2" type="date" aria-label="Search"
-	                                       th:name="entrada" />
-	                                <input class="form-control mr-sm-2" type="date" aria-label="Search"
-	                                       th:name="saida" />
+	                            <form class="form-inline" method="GET" th:action="@{/professores/buscar/turma}">
+	                                <select class="form-control mr-sm-2" th:name="id" aria-label="Search">
+	                                    <option value="">Turma</option>
+	                                    <option th:each="t : ${turma}" th:value="${t.id}" th:text="${t.nome}">TJW</option>
+	                                </select>
 	                                <button class="btn btn-outline-success my-2 my-sm-0">Search</button>
 	                            </form>
 	                        </nav>
@@ -82,8 +80,6 @@
 	                    </div>
 	                </div>
 	            </div>
-	
-	
 	            <div class="table-responsive">
 	            
 	            	<div th:replace="fragments/alert"></div>
@@ -92,46 +88,22 @@
 	                    <thead>
 	                    <tr>
 	                        <th>#</th>
-	                        <th th:text="#{tabela.funcionario.col.nome}">Nome</th>
-	                        <th th:text="#{tabela.funcionario.col.salario}">Salário</th>
-	                        <th th:text="#{tabela.funcionario.col.departamento}">Departamento</th>
-	                        <th th:text="#{tabela.funcionario.col.cargo}">Cargo</th>
-	                        <th th:text="#{tabela.funcionario.col.endereco}">Endereço</th>
-	                        <th th:text="#{tabela.funcionario.col.dataEntrada}">Data de Entrada</th>
-	                        <th th:text="#{tabela.funcionario.col.dataSaida}">Data de Saída</th>
-	                        <th th:text="#{tabela.funcionario.col.acao}">Ação</th>
+	                        <th th:text="#{tabela.professor.col.nome}">Nome</th>
+	                        <th th:text="#{tabela.professor.col.email}">Email</th>
+	                        <th th:text="#{tabela.professor.col.turma}">turma</th>
 	                    </tr>
 	                    </thead>
 	                    <tbody>
-		                    <tr th:each="f : ${funcionarios}">
-		                        <td th:text="${f.id}">2</td>
-		                        <td th:text="${f.nome}">Ana Maria Lindoval</td>
-		                        <td th:text="|R$ ${{f.salario}}|">R$ 3.560,70</td>
-		                        <td th:text="${f.cargo.departamento.nome}">Administração</td>
-		                        <td th:text="${f.cargo.nome}">Auxiliar Administrativo</td>
-		                        <td>
-		                            <button type="button" class="btn btn-secondary btn-sm" data-container="body"
-		                                    data-toggle="popover" data-placement="top"
-		                                    th:attr="data-content=${#strings.concat(
-			                                    f.endereco.logradouro, ', ', 
-			                                    f.endereco.numero, ' ', 
-			                                    f.endereco.complemento, ' - ', 
-			                                    f.endereco.bairro, ', ',
-			                                    f.endereco.cidade, ' - ', 
-			                                    f.endereco.uf.sigla, ' - ',
-			                                    f.endereco.cep
-		                                    )}">
-		                                
-		                                <span class="oi oi-eye" title="Visualizar" aria-hidden="true"></span>
-		                            </button>
-		                        </td>
-		                        <td th:text="${#temporals.format(f.dataEntrada, 'dd/MM/yyyy')}">2017/08/14</td>
-		                        <td th:text="${#temporals.format(f.dataSaida, 'dd/MM/yyyy')}">02/03/2015</td>
+		                    <tr th:each="p : ${professores}">
+		                        <td th:text="${p.id}">2</td>
+		                        <td th:text="${p.nome}">Ana Maria Lindoval</td>
+		                        <td th:text="${p.email}">ana.maria.lindoval@aluno.ifce.edu.br</td>
+		                        <td th:text="${p.turma.nome}">TJW</td>
 		                        <td colspan="2">
-		                            <a class="btn btn-info btn-sm" th:href="@{/funcionarios/editar/{id} (id=${f.id}) }" role="button">
+		                            <a class="btn btn-info btn-sm" th:href="@{/professores/editar/{id} (id=${a.id}) }" role="button">
 		                                <span class="oi oi-brush" title="Editar" aria-hidden="true"></span>
 		                            </a>
-		                            <button th:id="${#strings.concat('btn_funcionarios/excluir/', f.id) }" type="button" class="btn btn-danger btn-sm"
+		                            <button th:id="${#strings.concat('btn_professores/excluir/', a.id) }" type="button" class="btn btn-danger btn-sm"
 		                                    data-toggle="modal" data-target="#myModal">
 		                                <span class="oi oi-circle-x" title="Excluir" aria-hidden="true"></span>
 		                            </button>

@@ -7,6 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -18,20 +19,19 @@ import javax.persistence.Table;
 public class Professor extends AbstractEntity<Long>{
 	
 	@Column(name="nome", nullable = false, unique = true, length = 60)
-	private String professor_nome;
+	private String nome;
 	
-	@Column(name="email_professor")
+	@Column(name="email")
 	private String email;
 	
 	@OneToMany(mappedBy = "professor")
 	private Collection<Turma> turma = new ArrayList<Turma>();
 	
-	
-	public String getProfessor_nome() {
-		return professor_nome;
+	public String getNome() {
+		return nome;
 	}
-	public void setProfessor_nome(String professor_nome) {
-		this.professor_nome = professor_nome;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 	public String getEmail() {
 		return email;

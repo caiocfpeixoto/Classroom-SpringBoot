@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -29,7 +30,11 @@ public class Turma extends AbstractEntity<Long>{
 	private Professor professor;
 	
 	@ManyToMany
-	@JoinColumn(name="id_aluno_fk")
+	@JoinTable(
+	        name = "turma_aluno",
+	        joinColumns = @JoinColumn(name= "id_turma_fk"),
+	        inverseJoinColumns = @JoinColumn(name="id_aluno_fk")
+	    )
 	private List<Aluno> aluno;
 	
 	@OneToMany
