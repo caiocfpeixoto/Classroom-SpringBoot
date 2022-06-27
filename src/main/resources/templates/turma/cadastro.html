@@ -14,7 +14,7 @@
 	                        </li>
 	                    </ul>
 	                </div>
-	                <a class="btn btn-primary btn-md" th:href="@{/turma/listar}" role="button">
+	                <a class="btn btn-primary btn-md" th:href="@{/turmas/listar}" role="button">
 	                    <span class="oi oi-spreadsheet" title="Cadastro" aria-hidden="true"></span>
 	                    <span>Listar Turmas</span>
 	                </a>
@@ -25,7 +25,7 @@
 	        
 	        	<div th:replace="fragments/alert"></div>
 	        
-	            <form th:action="${turma.id == null} ? @{/turma/salvar} : @{/turma/editar}" 
+	            <form th:action="${turma.id == null} ? @{/turmas/salvar} : @{/turmas/editar}" 
 	                  th:object="${turma}" method="POST">
 	                <div class="form-row">
 	                    <div class="form-group col-md-6">
@@ -57,19 +57,6 @@
 	                        </select>
 	                        <div class="invalid-feedback">
 								<span th:errors="*{professor}"></span>
-	                        </div>
-	                    </div>
-	                </div>
-	                <div class="form-row">
-	                    <div class="form-group col-md-6">
-	                        <label for="turma">Aluno</label>
-	                        <select id="turma" class="form-control" th:field="*{aluno}"
-	                                th:classappend="${#fields.hasErrors('aluno')} ? 'is-invalid'">
-	                            <option value="">Selecione...</option>
-	                            <option th:each="a : ${aluno}" th:value="${a.id}" th:text="${a.nome}"></option>
-	                        </select>
-	                        <div class="invalid-feedback">
-								<span th:errors="*{aluno}"></span>
 	                        </div>
 	                    </div>
 	                </div>

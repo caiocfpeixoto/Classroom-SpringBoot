@@ -29,9 +29,6 @@
 	                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseEmail"
 	                        aria-controls="collapseCargo">Email 
 	                </button>
-	                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseTurma"
-	                        aria-controls="collapseData">Turmas
-	                </button>
 	            </p>
 	            <div class="row">
 	                <div class="col">
@@ -63,23 +60,6 @@
 	                    </div>
 	                </div>
 	            </div>
-	            <div class="row">
-	                <div class="col">
-	                    <div class="collapse" id="collapseTurma">
-	
-	                        <nav class="navbar navbar-light bg-light">
-	                            <form class="form-inline" method="GET" th:action="@{/professores/buscar/turma}">
-	                                <select class="form-control mr-sm-2" th:name="id" aria-label="Search">
-	                                    <option value="">Turma</option>
-	                                    <option th:each="t : ${turma}" th:value="${t.id}" th:text="${t.nome}">TJW</option>
-	                                </select>
-	                                <button class="btn btn-outline-success my-2 my-sm-0">Search</button>
-	                            </form>
-	                        </nav>
-	
-	                    </div>
-	                </div>
-	            </div>
 	            <div class="table-responsive">
 	            
 	            	<div th:replace="fragments/alert"></div>
@@ -87,23 +67,22 @@
 	                <table class="table table-striped table-hover table-sm">
 	                    <thead>
 	                    <tr>
-	                        <th>#</th>
-	                        <th th:text="#{tabela.professor.col.nome}">Nome</th>
-	                        <th th:text="#{tabela.professor.col.email}">Email</th>
-	                        <th th:text="#{tabela.professor.col.turma}">turma</th>
+	                         <th>#</th>
+	                        <th>Nome</th>
+	                        <th>Email</th>
+	                        <th>Ação</th>
 	                    </tr>
 	                    </thead>
 	                    <tbody>
 		                    <tr th:each="p : ${professores}">
 		                        <td th:text="${p.id}">2</td>
-		                        <td th:text="${p.nome}">Ana Maria Lindoval</td>
-		                        <td th:text="${p.email}">ana.maria.lindoval@aluno.ifce.edu.br</td>
-		                        <td th:text="${p.turma.nome}">TJW</td>
+		                        <td th:text="${p.nome}">Corneli</td>
+		                        <td th:text="${p.email}">pipipipopopo@gmail.com</td>
 		                        <td colspan="2">
-		                            <a class="btn btn-info btn-sm" th:href="@{/professores/editar/{id} (id=${a.id}) }" role="button">
+		                            <a class="btn btn-info btn-sm" th:href="@{/professores/editar/{id} (id=${p.id}) }" role="button">
 		                                <span class="oi oi-brush" title="Editar" aria-hidden="true"></span>
 		                            </a>
-		                            <button th:id="${#strings.concat('btn_professores/excluir/', a.id) }" type="button" class="btn btn-danger btn-sm"
+		                            <button th:id="${#strings.concat('btn_professores/excluir/', p.id) }" type="button" class="btn btn-danger btn-sm"
 		                                    data-toggle="modal" data-target="#myModal">
 		                                <span class="oi oi-circle-x" title="Excluir" aria-hidden="true"></span>
 		                            </button>

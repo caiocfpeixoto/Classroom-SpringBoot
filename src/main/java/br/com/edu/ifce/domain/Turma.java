@@ -41,7 +41,7 @@ public class Turma extends AbstractEntity<Long>{
 	@JoinColumn(name="id_conteudo_fk")
 	private List<Conteudo> conteudo;
 	
-	private String getNome() {
+	public String getNome() {
 		return nome;
 	}
 	public void setNome(String nome) {
