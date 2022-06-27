@@ -12,6 +12,10 @@ public class Conteudo extends AbstractEntity<Long>{
 	@Column(nullable = false)
 	private String descricao;
 
+	@ManyToOne
+	@JoinColumn(name="id_turma_fk")
+	private Turma turma;
+	
 	public String getTitulo() {
 		return titulo;
 	}

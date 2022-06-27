@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -31,6 +32,9 @@ public class Turma extends AbstractEntity<Long>{
 	@JoinColumn(name="id_aluno_fk")
 	private List<Aluno> aluno;
 	
+	@OneToMany
+	@JoinColumn(name="id_conteudo_fk")
+	private List<Conteudo> conteudo;
 	
 	private String getNome() {
 		return nome;
@@ -56,7 +60,10 @@ public class Turma extends AbstractEntity<Long>{
 	public void setAluno(List<Aluno> aluno) {
 		this.aluno = aluno;
 	}
-	
-	
-	
+	public List<Conteudo> getConteudo() {
+		return conteudo;
+	}
+	public void setConteudo(List<Conteudo> conteudo) {
+		this.conteudo = conteudo;
+	}
 }

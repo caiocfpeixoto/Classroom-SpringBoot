@@ -1,5 +1,18 @@
 package br.com.edu.ifce.dao;
 
-public class TurmaDao {
+import java.util.List;
 
+import br.com.edu.ifce.domain.Turma;
+
+public interface TurmaDao {
+	
+	void save(Turma turma);
+	
+	void update(Turma turma);
+	
+	void delete(Long id);
+	
+	Turma findById(Long id);
+	
+	List<Turma> findAll();
 }

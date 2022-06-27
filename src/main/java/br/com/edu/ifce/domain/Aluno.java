@@ -15,7 +15,7 @@ public class Aluno extends AbstractEntity<Long>{
 	@Column(name="email_aluno")
 	private String email_institucional;
 	
-	@ManyToMany
+	@ManyToMany(mappedBy = "aluno")
 	private Collection<Turma> turma = new ArrayList<Turma>();
 	
 	@ManyToMany
@@ -33,6 +33,18 @@ public class Aluno extends AbstractEntity<Long>{
 	}
 	public void setEmail_institucional(String email_institucional) {
 		this.email_institucional = email_institucional;
+	}
+	public Collection<Turma> getTurma() {
+		return turma;
+	}
+	public void setTurma(Collection<Turma> turma) {
+		this.turma = turma;
+	}
+	public Collection<Professor> getProf() {
+		return prof;
+	}
+	public void setProf(Collection<Professor> prof) {
+		this.prof = prof;
 	}
 	
 }

@@ -1,5 +1,18 @@
 package br.com.edu.ifce.dao;
 
-public class ProfessorDao {
+import java.util.List;
 
+import br.com.edu.ifce.domain.Professor;
+
+public interface ProfessorDao {
+	
+	void save(Professor professor);
+	
+	void update(Professor professor);
+	
+	void delete(Long id);
+	
+	Professor findById(Long id);
+	
+	List<Professor> findAll();
 }
