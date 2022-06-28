@@ -108,25 +108,23 @@
 	                    <thead>
 	                    <tr>
 	                        <th>#</th>
-	                        <th th:text="#{tabela.turma.col.nome}">Nome</th>
-	                        <th th:text="#{tabela.turma.col.codigo}">Codigo</th>
-	                        <th th:text="#{tabela.turma.col.professor}">Professor</th>
-	                        <th th:text="#{tabela.turma.col.aluno}">Aluno</th>
-	                        <th th:text="#{tabela.turma.col.acao}">Ação</th>
+	                        <th>Nome</th>
+	                        <th>Codigo</th>
+	                        <th>Professor</th>
+	                        <th>Ação</th>
 	                    </tr>
 	                    </thead>
 	                    <tbody>
-		                    <tr th:each="t : ${turma}">
+		                    <tr th:each="t : ${turmas}">
 		                        <td th:text="${t.id}">2</td>
 		                        <td th:text="${t.nome}">TJW</td>
 		                        <td th:text="${t.codigo}">5152442</td>
 		                        <td th:text="${t.professor.nome}">Corneli</td>
-		                        <td th:text="${t.aluno.nome}">Caio</td>
 		                        <td colspan="2">
-		                            <a class="btn btn-info btn-sm" th:href="@{/turma/editar/{id} (id=${t.id}) }" role="button">
+		                            <a class="btn btn-info btn-sm" th:href="@{/turmas/editar/{id} (id=${t.id}) }" role="button">
 		                                <span class="oi oi-brush" title="Editar" aria-hidden="true"></span>
 		                            </a>
-		                            <button th:id="${#strings.concat('btn_turma/excluir/', t.id) }" type="button" class="btn btn-danger btn-sm"
+		                            <button th:id="${#strings.concat('btn_turmas/excluir/', t.id) }" type="button" class="btn btn-danger btn-sm"
 		                                    data-toggle="modal" data-target="#myModal">
 		                                <span class="oi oi-circle-x" title="Excluir" aria-hidden="true"></span>
 		                            </button>

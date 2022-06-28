@@ -43,4 +43,12 @@ public class ProfessorServiceImpl implements ProfessorService{
 		return dao.findAll();
 	}
 
+	@Override
+	public boolean professorTemTurmas(Long id) {
+		if(buscarPorId(id).getTurma().isEmpty()) {
+			return false;
+		}
+		return true;
+	}
+
 }

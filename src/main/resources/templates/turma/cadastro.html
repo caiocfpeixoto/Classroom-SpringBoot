@@ -48,16 +48,13 @@
 	                    </div>
 	                </div>
 	                <div class="form-row">
-	                    <div class="form-group col-md-6">
-	                        <label for="turma">Professor</label>
-	                        <select id="turma" class="form-control" th:field="*{professor}"
-	                                th:classappend="${#fields.hasErrors('professor')} ? 'is-invalid'">
-	                            <option value="">Selecione...</option>
-	                            <option th:each="p : ${professor}" th:value="${p.id}" th:text="${p.nome}"></option>
+	                    <div class="form-group col-md-4">
+	                        <label for="professor">Professor</label>
+	                        <select id="professor" class="form-control" th:field="*{professor}">
+	                            <option value="">Selecione</option>
+	                            <option th:each="p : ${professores}" 
+	                                    th:value="${p.id}" th:text="${p.nome}">Otavio</option>
 	                        </select>
-	                        <div class="invalid-feedback">
-								<span th:errors="*{professor}"></span>
-	                        </div>
 	                    </div>
 	                </div>
 	                <button type="submit" class="btn btn-primary btn-sm">Salvar</button>
