@@ -15,4 +15,6 @@ public interface TurmaService {
 	Turma buscarPorId(Long id);
 	
 	List<Turma> buscarTodos();
+
+	boolean turmaTemAlunos(Long id);
 }

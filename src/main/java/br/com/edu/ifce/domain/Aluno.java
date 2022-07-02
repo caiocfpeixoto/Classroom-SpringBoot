@@ -1,7 +1,8 @@
 package br.com.edu.ifce.domain;
 
-import java.util.ArrayList;
-import java.util.Collection;
+
+import java.util.List;
+
 import javax.persistence.*;
 
 @SuppressWarnings("serial")
@@ -9,14 +10,14 @@ import javax.persistence.*;
 @Table(name= "tabela_aluno")
 public class Aluno extends AbstractEntity<Long>{
 	
-	@Column(name="nome")
+	@Column(name="nome", nullable = false, unique = true, length = 60)
 	private String nome;
 	
-	@Column(name="email_institucional")
+	@Column(name="email_institucional", nullable = false, unique = true, length = 60)
 	private String email_institucional;
 	
 	@ManyToMany(mappedBy = "aluno")
-	private Collection<Turma> turma = new ArrayList<Turma>();
+	private List<Turma> turma;
 	
 	
 	public String getNome() {
@@ -31,11 +32,11 @@ public class Aluno extends AbstractEntity<Long>{
 	public void setEmail_institucional(String email_institucional) {
 		this.email_institucional = email_institucional;
 	}
-	public Collection<Turma> getTurma() {
+	public List<Turma> getTurma() {
 		return turma;
 	}
-	public void setTurma(Collection<Turma> turma) {
+	public void setTurma(List<Turma> turma) {
 		this.turma = turma;
 	}
-	
+
 }

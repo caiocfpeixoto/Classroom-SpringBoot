@@ -41,21 +41,32 @@ public class TurmaController {
 	@PostMapping("/salvar")
 	public String salvar(Turma turma, RedirectAttributes attr) {
 		turmaService.salvar(turma);
-		attr.addAttribute("sucess", "Turma inserida com sucesso.");
+		attr.addAttribute("success", "Turma inserida com sucesso.");
 		return "redirect:/turmas/cadastrar";
 	}
 	
 	@GetMapping("/editar/{id}")
 	public String preEditar(@PathVariable("id") Long id, ModelMap model) {
 		model.addAttribute("turma", turmaService.buscarPorId(id));
-		return "/turma/cadastro";
+		return "turma/cadastro";
 	}
 	
 	@PostMapping("/editar")
 	public String editar(Turma turma, RedirectAttributes attr) {
 		turmaService.editar(turma);
-		attr.addFlashAttribute("sucess", "Registro atualizado com sucesso.");
+		attr.addFlashAttribute("success", "Registro atualizado com sucesso.");
 		return "redirect:/turmas/cadastrar";
+	}
+	
+	@GetMapping("/excluir/{id}")
+	public String excluir(@PathVariable("id") Long id, RedirectAttributes attr) {
+		if (turmaService.turmaTemAlunos(id)) {
+			attr.addFlashAttribute("fail", "Turma não excluida. Tem Aluno(s) vinculado(s).");
+		} else {
+			turmaService.excluir(id);
+			attr.addFlashAttribute("success", "Turma excluida com sucesso.");
+		}
+		return "redirect:/turmas/listar";
 	}
 	
 	@ModelAttribute("professores")

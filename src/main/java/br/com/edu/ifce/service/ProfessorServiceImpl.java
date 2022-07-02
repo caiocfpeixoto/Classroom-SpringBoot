@@ -10,23 +10,25 @@ import br.com.edu.ifce.dao.ProfessorDao;
 import br.com.edu.ifce.domain.Professor;
 
 @Service
-@Transactional(readOnly = false)
 public class ProfessorServiceImpl implements ProfessorService{
 	
 	@Autowired
 	private ProfessorDao dao;
 	
 	@Override
+	@Transactional(readOnly = false)
 	public void salvar(Professor professor) {
 		dao.save(professor);
 	}
 
 	@Override
+	@Transactional(readOnly = false)
 	public void editar(Professor professor) {
 		dao.update(professor);
 	}
 
 	@Override
+	@Transactional(readOnly = false)
 	public void excluir(Long id) {
 		dao.delete(id);
 	}

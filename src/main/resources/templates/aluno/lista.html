@@ -71,7 +71,7 @@
 	                            <form class="form-inline" method="GET" th:action="@{/alunos/buscar/turma}">
 	                                <select class="form-control mr-sm-2" th:name="id" aria-label="Search">
 	                                    <option value="">Turma</option>
-	                                    <option th:each="t : ${turma}" th:value="${t.id}" th:text="${t.nome}">TJW</option>
+	                                    <option th:each="t : ${turmas}" th:value="${t.id}" th:text="${t.nome}">TJW</option>
 	                                </select>
 	                                <button class="btn btn-outline-success my-2 my-sm-0">Search</button>
 	                            </form>

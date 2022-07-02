@@ -43,4 +43,12 @@ public class TurmaServiceImpl implements TurmaService{
 		return dao.findAll();
 	}
 
+	@Override
+	public boolean turmaTemAlunos(Long id) {
+		if (buscarPorId(id).getAluno().isEmpty()) {
+			return false;
+		}
+		return true;
+	}
+
 }

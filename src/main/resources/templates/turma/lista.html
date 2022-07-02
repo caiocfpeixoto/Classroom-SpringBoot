@@ -32,9 +32,6 @@
 	                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseProfessor"
 	                        aria-controls="collapseData">Professor
 	                </button>
-	                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseAluno"
-	                        aria-controls="collapseData">Aluno
-	                </button>
 	            </p>
 	            <div class="row">
 	                <div class="col">
@@ -75,23 +72,6 @@
 	                                <select class="form-control mr-sm-2" th:name="id" aria-label="Search">
 	                                    <option value="">Professor</option>
 	                                    <option th:each="p : ${professor}" th:value="${p.id}" th:text="${p.nome}">Corneli</option>
-	                                </select>
-	                                <button class="btn btn-outline-success my-2 my-sm-0">Search</button>
-	                            </form>
-	                        </nav>
-	
-	                    </div>
-	                </div>
-	            </div>
-	            <div class="row">
-	                <div class="col">
-	                    <div class="collapse" id="collapseAluno">
-	
-	                        <nav class="navbar navbar-light bg-light">
-	                            <form class="form-inline" method="GET" th:action="@{/turmas/buscar/aluno}">
-	                                <select class="form-control mr-sm-2" th:name="id" aria-label="Search">
-	                                    <option value="">Aluno</option>
-	                                    <option th:each="a : ${aluno}" th:value="${a.id}" th:text="${a.nome}">Caio</option>
 	                                </select>
 	                                <button class="btn btn-outline-success my-2 my-sm-0">Search</button>
 	                            </form>

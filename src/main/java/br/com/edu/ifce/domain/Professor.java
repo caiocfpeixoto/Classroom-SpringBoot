@@ -1,15 +1,10 @@
 package br.com.edu.ifce.domain;
 
-import java.util.ArrayList;
-import java.util.Collection;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 
@@ -21,11 +16,11 @@ public class Professor extends AbstractEntity<Long>{
 	@Column(name="nome", nullable = false, unique = true, length = 60)
 	private String nome;
 	
-	@Column(name="email")
+	@Column(name="email", nullable = false, unique = true, length = 60)
 	private String email;
 	
 	@OneToMany(mappedBy = "professor")
-	private Collection<Turma> turma = new ArrayList<Turma>();
+	private List<Turma> turma;
 	
 	public String getNome() {
 		return nome;
@@ -39,10 +34,10 @@ public class Professor extends AbstractEntity<Long>{
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public Collection<Turma> getTurma() {
+	public List<Turma> getTurma() {
 		return turma;
 	}
-	public void setTurma(Collection<Turma> turma) {
+	public void setTurma(List<Turma> turma) {
 		this.turma = turma;
 	}
 	
