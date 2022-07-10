@@ -14,7 +14,7 @@
 	                </ul>
 	                <a class="btn btn-primary btn-md" th:href="@{/alunos/cadastrar}" role="button">
 	                    <span class="oi oi-plus" title="Cadastro" aria-hidden="true"></span>
-	                    <span>Cadastrar Aluno</span>
+	                    <span>Cadastrar Alunos</span>
 	                </a>
 	            </div>
 	        </nav>
@@ -26,11 +26,8 @@
 	                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseNome"
 	                        aria-controls="collapseNome">Nome
 	                </button>
-	                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseEmail"
-	                        aria-controls="collapseCargo">Email Institucional
-	                </button>
 	                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseTurma"
-	                        aria-controls="collapseData">Turma
+	                        aria-controls="collapseTurma">Turma
 	                </button>
 	            </p>
 	            <div class="row">
@@ -41,21 +38,6 @@
 	                            <form class="form-inline" method="GET" th:action="@{/alunos/buscar/nome}">
 	                                <input class="form-control mr-sm-2" type="search" placeholder="nome" aria-label="Search"
 	                                       th:name="nome" />
-	                                <button class="btn btn-outline-success my-2 my-sm-0">Search</button>
-	                            </form>
-	                        </nav>
-	
-	                    </div>
-	                </div>
-	            </div>
-				<div class="row">
-	                <div class="col">
-	                    <div class="collapse" id="collapseEmail">
-	
-	                        <nav class="navbar navbar-light bg-light">
-	                            <form class="form-inline" method="GET" th:action="@{/alunos/buscar/email_institucional}">
-									<input class="form-control mr-sm-2" type="search" placeholder="email_institucional" aria-label="Search"
-	                                       th:name="email_institucional" />
 	                                <button class="btn btn-outline-success my-2 my-sm-0">Search</button>
 	                            </form>
 	                        </nav>

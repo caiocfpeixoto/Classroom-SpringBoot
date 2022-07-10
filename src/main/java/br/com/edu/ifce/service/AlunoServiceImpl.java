@@ -43,4 +43,14 @@ public class AlunoServiceImpl implements AlunoService{
 		return dao.findAll();
 	}
 
+	@Override @Transactional(readOnly = true)
+	public List<Aluno> buscarPorNome(String nome) {
+		return dao.findByNome(nome);
+	}
+
+	@Override
+	public List<Aluno> buscarPorTurma(Long id) {
+		return dao.findByTurmaId(id);
+	}
+
 }

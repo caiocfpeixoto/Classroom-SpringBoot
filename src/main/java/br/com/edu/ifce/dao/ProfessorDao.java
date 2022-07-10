@@ -15,4 +15,6 @@ public interface ProfessorDao {
 	Professor findById(Long id);
 	
 	List<Professor> findAll();
+
+	List<Professor> findByNome(String nome);
 }

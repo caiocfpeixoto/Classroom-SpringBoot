@@ -53,4 +53,9 @@ public class ProfessorServiceImpl implements ProfessorService{
 		return true;
 	}
 
+	@Override
+	public List<Professor> buscarPorNome(String nome) {
+		return dao.findByNome(nome);
+	}
+
 }

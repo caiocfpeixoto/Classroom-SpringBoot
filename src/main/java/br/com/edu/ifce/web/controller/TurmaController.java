@@ -2,14 +2,18 @@ package br.com.edu.ifce.web.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.edu.ifce.domain.Professor;
@@ -39,9 +43,14 @@ public class TurmaController {
 	}
 	
 	@PostMapping("/salvar")
-	public String salvar(Turma turma, RedirectAttributes attr) {
+	public String salvar(@Valid Turma turma,BindingResult result,RedirectAttributes attr) {
+		
+		if(result.hasErrors()) {
+			return"/turma/cadastro";
+		}
+		
 		turmaService.salvar(turma);
-		attr.addAttribute("success", "Turma inserida com sucesso.");
+		attr.addFlashAttribute("success", "Turma inserida com sucesso.");
 		return "redirect:/turmas/cadastrar";
 	}
 	
@@ -52,7 +61,12 @@ public class TurmaController {
 	}
 	
 	@PostMapping("/editar")
-	public String editar(Turma turma, RedirectAttributes attr) {
+	public String editar(@Valid Turma turma,BindingResult result, RedirectAttributes attr) {
+		
+		if(result.hasErrors()) {
+			return"/turma/cadastro";
+		}
+		
 		turmaService.editar(turma);
 		attr.addFlashAttribute("success", "Registro atualizado com sucesso.");
 		return "redirect:/turmas/cadastrar";
@@ -67,6 +81,18 @@ public class TurmaController {
 			attr.addFlashAttribute("success", "Turma excluida com sucesso.");
 		}
 		return "redirect:/turmas/listar";
+	}
+	
+	@GetMapping("/buscar/nome")
+	public String getPorNome(@RequestParam("nome") String nome, ModelMap model) {		
+		model.addAttribute("turmas", turmaService.buscarPorNome(nome));
+		return "/turma/lista";
+	}
+	
+	@GetMapping("/buscar/professor")
+	public String getPorProfessor(@RequestParam("id") Long id, ModelMap model) {
+		model.addAttribute("turmas", turmaService.buscarPorProfessor(id));
+		return "/turma/lista";
 	}
 	
 	@ModelAttribute("professores")

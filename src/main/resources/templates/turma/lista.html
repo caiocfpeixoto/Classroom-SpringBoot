@@ -20,14 +20,10 @@
 	        </nav>
 	
 	        <div class="container">
-	
 	            <p>
 	                <i class="oi oi-magnifying-glass"></i><span></span>
 	                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseNome"
 	                        aria-controls="collapseNome">Nome
-	                </button>
-	                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseCodigo"
-	                        aria-controls="collapseCargo">Código 
 	                </button>
 	                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseProfessor"
 	                        aria-controls="collapseData">Professor
@@ -48,21 +44,6 @@
 	                    </div>
 	                </div>
 	            </div>
-				<div class="row">
-	                <div class="col">
-	                    <div class="collapse" id="collapseCodigo">
-	
-	                        <nav class="navbar navbar-light bg-light">
-	                            <form class="form-inline" method="GET" th:action="@{/turmas/buscar/codigo}">
-									<input class="form-control mr-sm-2" type="search" placeholder="codigo" aria-label="Search"
-	                                       th:name="codigo" />
-	                                <button class="btn btn-outline-success my-2 my-sm-0">Search</button>
-	                            </form>
-	                        </nav>
-	
-	                    </div>
-	                </div>
-	            </div>
 	            <div class="row">
 	                <div class="col">
 	                    <div class="collapse" id="collapseProfessor">
@@ -71,7 +52,7 @@
 	                            <form class="form-inline" method="GET" th:action="@{/turmas/buscar/professor}">
 	                                <select class="form-control mr-sm-2" th:name="id" aria-label="Search">
 	                                    <option value="">Professor</option>
-	                                    <option th:each="p : ${professor}" th:value="${p.id}" th:text="${p.nome}">Corneli</option>
+	                                    <option th:each="p : ${professores}" th:value="${p.id}" th:text="${p.nome}">Corneli</option>
 	                                </select>
 	                                <button class="btn btn-outline-success my-2 my-sm-0">Search</button>
 	                            </form>

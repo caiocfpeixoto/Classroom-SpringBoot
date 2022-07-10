@@ -15,4 +15,8 @@ public interface TurmaDao {
 	Turma findById(Long id);
 	
 	List<Turma> findAll();
+
+	List<Turma> findByNome(String nome);
+
+	List<Turma> findByProfessorId(Long id);
 }

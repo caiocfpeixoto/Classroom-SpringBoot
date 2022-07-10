@@ -27,6 +27,9 @@
 	        
 	            <form th:action="${aluno.id == null} ? @{/alunos/salvar} : @{/alunos/editar}" 
 	                  th:object="${aluno}" method="POST">
+	                  
+	                <div th:replace="fragments/validacao :: validacao"></div>
+	                  
 	                <div class="form-row">
 	                    <div class="form-group col-md-6">
 	                        <label for="nome">Nome do Aluno</label>
@@ -57,6 +60,7 @@
 	                        </select>
 	                    </div>
 	                </div>
+	                <input type="hidden" id="id" th:field="*{id}"/>
 	                <button type="submit" class="btn btn-primary btn-sm">Salvar</button>
 	            </form>
 	        </div>

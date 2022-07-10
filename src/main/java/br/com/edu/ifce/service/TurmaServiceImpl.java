@@ -51,4 +51,14 @@ public class TurmaServiceImpl implements TurmaService{
 		return true;
 	}
 
+	@Override @Transactional(readOnly = true)
+	public List<Turma> buscarPorNome(String nome) {
+		return dao.findByNome(nome);
+	}
+
+	@Override
+	public List<Turma> buscarPorProfessor(Long id) {
+		return dao.findByProfessorId(id);
+	}
+
 }

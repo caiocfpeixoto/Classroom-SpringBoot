@@ -15,4 +15,8 @@ public interface AlunoService {
 	Aluno buscarPorId(Long id);
 	
 	List<Aluno> buscarTodos();
+
+	List<Aluno> buscarPorNome(String nome);
+
+	List<Aluno> buscarPorTurma(Long id);
 }

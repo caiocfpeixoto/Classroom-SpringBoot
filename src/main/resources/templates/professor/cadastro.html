@@ -27,6 +27,9 @@
 	        
 	            <form th:action="${professor.id == null} ? @{/professores/salvar} : @{/professores/editar}" 
 	                  th:object="${professor}" method="POST">
+	                
+	                <div th:replace="fragments/validacao :: validacao"></div>
+	                
 	                <div class="form-row">
 	                    <div class="form-group col-md-6">
 	                        <label for="nome">Nome do Professor</label>

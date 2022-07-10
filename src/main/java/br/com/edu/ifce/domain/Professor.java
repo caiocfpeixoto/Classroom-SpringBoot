@@ -6,6 +6,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 
 @SuppressWarnings("serial")
@@ -13,9 +15,13 @@ import javax.persistence.Table;
 @Table(name="tabela_professor")
 public class Professor extends AbstractEntity<Long>{
 	
+	@NotBlank(message = "Informe um nome.")
+	@Size(min=3,max= 60,message = "O nome do professor deve ter entre {min} e {max} caracteres.")
 	@Column(name="nome", nullable = false, unique = true, length = 60)
 	private String nome;
 	
+	@NotBlank(message = "Informe um email.")
+	@Size(min=5,max= 60,message = "O email do professor deve ter entre {min} e {max} caracteres.")
 	@Column(name="email", nullable = false, unique = true, length = 60)
 	private String email;
 	

@@ -17,4 +17,8 @@ public interface TurmaService {
 	List<Turma> buscarTodos();
 
 	boolean turmaTemAlunos(Long id);
+
+	List<Turma> buscarPorNome(String nome);
+
+	List<Turma> buscarPorProfessor(Long id);
 }

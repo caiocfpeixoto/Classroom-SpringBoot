@@ -17,4 +17,6 @@ public interface ProfessorService {
 	List<Professor> buscarTodos();
 
 	boolean professorTemTurmas(Long id);
+
+	List<Professor> buscarPorNome(String nome);
 }

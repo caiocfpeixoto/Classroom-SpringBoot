@@ -15,4 +15,8 @@ void save(Aluno aluno);
 	Aluno findById(Long id);
 	
 	List<Aluno> findAll();
+
+	List<Aluno> findByNome(String nome);
+
+	List<Aluno> findByTurmaId(Long id);
 }

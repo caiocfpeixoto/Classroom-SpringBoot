@@ -1,7 +1,6 @@
 package br.com.edu.ifce.domain;
 
 import java.io.Serializable;
-import java.util.Objects;
 
 import javax.persistence.*;
 
